@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: CandleApp Develop Service
+Resources:
+    CandleAppDevelopServiceApiGateway:
+        Type: AWS::Serverless::Api
+        Properties:
+            StageName: v1
+            EndpointConfiguration: REGIONAL
+    CandleAppDevelopServiceLambda:
+        Type: AWS::Serverless::Function
+        Properties:
+            MemorySize: 1024
+            Timeout: 900
+            VpcConfig:
+                SecurityGroupIds:
+                    - sg-06c3aff67768d75c8
+                SubnetIds:
+                    - subnet-0d493e47d71fba3b5
+                    - subnet-0894587249739ca01
+                    - subnet-05e5bde2289c3192c
+            Handler: dist/server/handler.handler
+            Runtime: nodejs14.x
+            CodeUri: .
+            Events:
+                CandleAppDevelopServiceApiGatewayTrigger:
+                    Type: Api
+                    Properties:
+                        Path: /{proxy+}
+                        Method: Any
+                        RestApiId:
+                            Ref: 

@@ -1,0 +1,34 @@
+# Dependencies
+# ===============================
+node_modules
+
+
+# Builds
+# ===============================
+dist
+
+
+# Tests
+# ===============================
+coverage
+
+
+# Environments
+# ===============================
+.env
+.env.dev
+.env.staging
+.env.prod
+.env.test
+test.pdf
+test.pdf
+
+
+# Logs
+# ===============================
+*.log
+
+
+# VS Code workspace
+# ===============================
+*.code-workspace
